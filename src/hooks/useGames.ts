@@ -18,8 +18,8 @@ useInfiniteQuery<FetchResponse<Game>,Error>({
   queryKey: ['games',gameQuery],
   queryFn: ({pageParam = 1}) => apiClient.getAll({
     params: {
-      genres: gameQuery.genre?.id , 
-      parent_platforms: gameQuery.platform?.id,
+      genres: gameQuery.genreID , 
+      parent_platforms: gameQuery.platformId,
       ordering: gameQuery.sortOrder,
       earch:gameQuery.searchText,
       page: pageParam,
@@ -27,7 +27,8 @@ useInfiniteQuery<FetchResponse<Game>,Error>({
   }),
   getNextPageParam : (lastPage,allPages) => {
     return lastPage.next ? allPages.length + 1 : undefined;
-  }
+  },
+  staleTime: 24 * 60 * 60 * 1000 //24 Hours
 });
 
 
