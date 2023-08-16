@@ -23,7 +23,7 @@ const useGames = () => {
         genres: gameQuery.genreId , 
         parent_platforms: gameQuery.platformId,
         ordering: gameQuery.sortOrder,
-        earch:gameQuery.searchText,
+        search:gameQuery.searchText,
         page: pageParam,
     }
     }),
